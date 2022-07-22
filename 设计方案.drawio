@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-07-22T02:44:03.767Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 Edg/103.0.1264.62" etag="-BPWsvYaRd_SRXBRl4Qb" version="20.1.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-07-22T03:08:04.126Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 Edg/103.0.1264.62" etag="Cxfkut7IEfl017LE5888" version="20.1.4" type="github">
   <diagram name="Page-1" id="efa7a0a1-bf9b-a30e-e6df-94a7791c09e9">
     <mxGraphModel dx="898" dy="545" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -16,7 +16,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="FhZoDT9mjNjwIompHx8n-184" value="r" style="swimlane;fontSize=19;" vertex="1" parent="1">
-          <mxGeometry x="20" y="90" width="520" height="360" as="geometry" />
+          <mxGeometry x="10" y="90" width="520" height="360" as="geometry" />
         </mxCell>
         <mxCell id="FhZoDT9mjNjwIompHx8n-189" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=19;" edge="1" parent="FhZoDT9mjNjwIompHx8n-184" source="FhZoDT9mjNjwIompHx8n-186" target="FhZoDT9mjNjwIompHx8n-187">
           <mxGeometry relative="1" as="geometry" />
@@ -43,11 +43,11 @@
         <mxCell id="FhZoDT9mjNjwIompHx8n-187" value="读取配置" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;" vertex="1" parent="FhZoDT9mjNjwIompHx8n-184">
           <mxGeometry x="198.5" y="90" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="FhZoDT9mjNjwIompHx8n-198" value="直接执行&lt;br&gt;rustup -V&lt;br&gt;并输出" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;" vertex="1" parent="FhZoDT9mjNjwIompHx8n-184">
-          <mxGeometry x="68.5" y="150" width="120" height="100" as="geometry" />
+        <mxCell id="FhZoDT9mjNjwIompHx8n-198" value="重定向输出到&lt;br&gt;raw数据库内" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;" vertex="1" parent="FhZoDT9mjNjwIompHx8n-184">
+          <mxGeometry x="68.5" y="145" width="120" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="FhZoDT9mjNjwIompHx8n-200" value="读取配置" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;" vertex="1" parent="FhZoDT9mjNjwIompHx8n-184">
-          <mxGeometry x="331.5" y="140" width="120" height="40" as="geometry" />
+        <mxCell id="FhZoDT9mjNjwIompHx8n-200" value="重定向输出到校验数据库内" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;" vertex="1" parent="FhZoDT9mjNjwIompHx8n-184">
+          <mxGeometry x="331.5" y="140" width="120" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
