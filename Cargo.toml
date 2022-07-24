@@ -1,0 +1,10 @@
+[workspace]
+
+members = [
+	"common",
+	"r",
+	"r-data",
+	"r-editor",
+	"r-translator",
+	"r-library",
+]
