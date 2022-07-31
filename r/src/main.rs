@@ -1,16 +1,15 @@
-use std::process::Command;
 
+/// 处理速度要快
+/// 减少对体验的影响
 fn main() {
-    let output = Command::new("rustc --version")
-        .arg("")
-        .output()
-        .unwrap_or_else(|e| panic!("执行进程出错：{}", e));
+    // 读取命令行参数
+    get_args();
+    // 预处理
+    let commands = parse_commands();
 
-    if output.status.success() {
-        let s = String::from_utf8_lossy(&output.stdout);
-        println!("{}", s);
-    } else {
-        let s = String::from_utf8_lossy(&output.stderr);
-        println!("e:{}", s);
+    for command in commands {
+        // 处理单条命令
     }
+
 }
+

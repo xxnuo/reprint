@@ -14,22 +14,6 @@ name = "r"
 version = "0.1.0"
 
 [[package]]
-name = "r-data"
-version = "0.1.0"
-
-[[package]]
-name = "r-editor"
-version = "0.1.0"
-
-[[package]]
-name = "r-library"
-version = "0.1.0"
-
-[[package]]
-name = "r-translator"
-version = "0.1.0"
-
-[[package]]
 name = "rand_core"
 version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
