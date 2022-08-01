@@ -10,7 +10,7 @@ fn main() {
         for arg in args {
             match arg.trim() {
                 "sleep" => {
-                    for i in 1..=5 {
+                    for i in 1..=3 {
                         println!("sleep -> {} output",i);
                         sleep(Duration::from_secs(1));
                     }
@@ -21,6 +21,7 @@ fn main() {
                 }
                 "error" => {
                     eprintln!("Make an error!");
+                    std::process::exit(138);
                 }
                 "input" => {
                     println!("Input 你好");
