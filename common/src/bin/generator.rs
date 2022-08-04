@@ -21,7 +21,8 @@ fn main() {
                 }
                 "error" => {
                     eprintln!("Make an error!");
-                    std::process::exit(138);
+                    // 测试不需要退出
+                    // std::process::exit(138);
                 }
                 "input" => {
                     println!("Input 你好");

@@ -12,6 +12,9 @@ dependencies = [
 [[package]]
 name = "r"
 version = "0.1.0"
+dependencies = [
+ "common",
+]
 
 [[package]]
 name = "rand_core"
