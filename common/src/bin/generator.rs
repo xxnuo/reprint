@@ -29,7 +29,7 @@ fn main() {
                     let mut line = String::new();
                     let bl = std::io::stdin().read_line(&mut line).unwrap();
                     println!("you input:{}",line.trim());
-                    println!("字节数：{}",bl);
+                    println!("字节数:{}",bl);
                 }
                 "help" => {
                     println!("sleep/ ?");

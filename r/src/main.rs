@@ -69,8 +69,8 @@ fn exec_base(command_str: &str) -> ExitCode {
             });
     });
 
-    thread_stdout.join().expect("无法加入线程：标准输出");
-    thread_stderr.join().expect("无法加入线程：标准错误");
+    thread_stdout.join().expect("无法加入线程:标准输出");
+    thread_stderr.join().expect("无法加入线程:标准错误");
 
     // 获取退出码并传递给调用方
     let mut exitcode: u8 = 0;
@@ -83,7 +83,7 @@ fn exec_base(command_str: &str) -> ExitCode {
             let res = command.wait().unwrap();
             exitcode = res.code().unwrap() as u8;
         }
-        Err(e) => eprintln!("等待子线程退出出错：{}", e),
+        Err(e) => eprintln!("等待子线程退出出错:{}", e),
     };
 
     ExitCode::from(exitcode)
@@ -91,29 +91,29 @@ fn exec_base(command_str: &str) -> ExitCode {
 
 fn process_single_stdout_and_err(line: &str) -> String {
     let _hash = wyhash::hash(line);
-    let _raw_path = PathBuf::from(&config::PATHS.0).join(&_hash);
-    let _new_path = PathBuf::from(&config::PATHS.1).join(&_hash);
+    let _file_name = _hash + ".txt";
+    let _new_path = PathBuf::from(&config::PATHS.1).join(&_file_name);
     if _new_path.is_file() {
-        let _display = _new_path.display();
         let mut _new_file = match File::open(&_new_path) {
-            Err(e) => panic!("{:?}:无法读入Patch文件{}的内容", e, _display),
+            Err(e) => panic!("{:?}:无法读入Patch文件{}的内容", e, _new_path.display()),
             Ok(file) => file,
         };
         let mut s = String::new();
         match _new_file.read_to_string(&mut s) {
-            Err(e) => panic!("{:?}:无法读入Patch文件{}内容到文本", e, _display),
+            Err(e) => panic!("{:?}:无法读入Patch文件{}内容到文本", e, _new_path.display()),
             Ok(_) => (),
         };
         return s;
     }
+
+    let _raw_path = PathBuf::from(&config::PATHS.0).join(&_file_name);
     if !_raw_path.is_file() {
-        let _display = _raw_path.display();
         let mut _raw_file = match File::create(&_raw_path) {
-            Err(e) => panic!("无法创建输出文件{}：{:?}", _display, e),
+            Err(e) => panic!("无法创建输出文件{}:{:?}", _raw_path.display(), e),
             Ok(file) => file,
         };
         match _raw_file.write(line.as_bytes()) {
-            Err(e) => panic!("无法写入输出文件{}：{:?}", _display, e),
+            Err(e) => panic!("无法写入输出文件{}:{:?}", _raw_path.display(), e),
             Ok(_) => (),
         }
     }
