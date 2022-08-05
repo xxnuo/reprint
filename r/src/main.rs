@@ -23,15 +23,19 @@ fn main() -> ExitCode {
     }
     let mut args = env::args();
     args.next(); // r.exe path
-    let _command = args.next().expect("用法: r any.exe [any args]");
+    let _command = match args.next() {
+        Some(some) => some,
+        // 没有命令输入，直接退出
+        None => return ExitCode::SUCCESS,
+    };
     let _command_str = _command.trim();
 
     // 内置命令
-    if  BUILTIN_COMMAND.contains(&_command_str) {
+    if BUILTIN_COMMAND.contains(&_command_str) {
         return exec_raw(
             PathBuf::from(&config::PATHS.2)
                 .join("tools")
-                .join(format!("{}.exe",_command_str))
+                .join(format!("{}.exe", _command_str))
                 .to_str()
                 .expect("路径转换出错"),
             args,
