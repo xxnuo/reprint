@@ -4,10 +4,14 @@ use std::path::PathBuf;
 
 const PROJ_ROOT_PATH: &str = r"C:\Users\bigtear\Documents\GitHub\reprint";
 
+use lazy_static::lazy_static;
+lazy_static! {
+    ///PATHS 0：raw 文件夹；1：new 文件夹
+    static ref PATHS: (PathBuf, PathBuf) = config_init();
+}
+
 fn main() {
-    // println!("{}",PathBuf::from(r"C:\no-exist").join("sub").display());
-    let (_raw_path, _new_path) = config_init();
-    println!("{:?}", _raw_path);
+    println!("{:?}", PATHS.0);
 }
 
 /// 获取输出目录和读取目录

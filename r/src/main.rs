@@ -1,11 +1,13 @@
-use std::io::{BufRead, BufReader};
+use std::fs::File;
+use std::io::{BufRead, BufReader, Read, Write};
+use std::path::PathBuf;
 use std::process::{Command, ExitCode, Stdio};
 use std::thread;
 
 use common::config;
+use common::wyhash;
 
 fn main() {
-    let (_raw_path, _new_path) = config::config_init();
     let _c = exec_base("./target/debug/generator.exe");
     println!("{:?}", _c);
     // todo!(|| { exec("",false) });
@@ -44,13 +46,27 @@ fn exec_base(command_str: &str) -> ExitCode {
         reader_stdout
             .lines()
             .filter_map(|line| line.ok())
-            .for_each(|line| println!("> {}", line));
+            .for_each(|line| {
+                let s = process_single_stdout_and_err(&line);
+                if s.is_empty() {
+                    println!("{}", line);
+                } else {
+                    println!("{}", s);
+                }
+            });
     });
     let thread_stderr = thread::spawn(move || {
         reader_stderr
             .lines()
             .filter_map(|line| line.ok())
-            .for_each(|line| eprintln!("{}", line));
+            .for_each(|line| {
+                let s = process_single_stdout_and_err(&line);
+                if s.is_empty() {
+                    eprintln!("{}", line);
+                } else {
+                    eprintln!("{}", s);
+                }
+            });
     });
 
     thread_stdout.join().expect("无法加入线程：标准输出");
@@ -71,4 +87,35 @@ fn exec_base(command_str: &str) -> ExitCode {
     };
 
     ExitCode::from(exitcode)
+}
+
+fn process_single_stdout_and_err(line: &str) -> String {
+    let _hash = wyhash::hash(line);
+    let _raw_path = PathBuf::from(&config::PATHS.0).join(&_hash);
+    let _new_path = PathBuf::from(&config::PATHS.1).join(&_hash);
+    if _new_path.is_file() {
+        let _display = _new_path.display();
+        let mut _new_file = match File::open(&_new_path) {
+            Err(e) => panic!("{:?}:无法读入Patch文件{}的内容", e, _display),
+            Ok(file) => file,
+        };
+        let mut s = String::new();
+        match _new_file.read_to_string(&mut s) {
+            Err(e) => panic!("{:?}:无法读入Patch文件{}内容到文本", e, _display),
+            Ok(_) => (),
+        };
+        return s;
+    }
+    if !_raw_path.is_file() {
+        let _display = _raw_path.display();
+        let mut _raw_file = match File::create(&_raw_path) {
+            Err(e) => panic!("无法创建输出文件{}：{:?}", _display, e),
+            Ok(file) => file,
+        };
+        match _raw_file.write(line.as_bytes()) {
+            Err(e) => panic!("无法写入输出文件{}：{:?}", _display, e),
+            Ok(_) => (),
+        }
+    }
+    return String::new();
 }
