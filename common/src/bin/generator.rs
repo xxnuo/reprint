@@ -1,9 +1,10 @@
 use std::env;
+use std::process::ExitCode;
 // use std::process::Command;
 use std::thread::sleep;
 use std::time::Duration;
 
-fn main() {
+fn main() -> ExitCode {
     let mut args = env::args();
     if args.len() > 1 {
         args.next();
@@ -11,7 +12,7 @@ fn main() {
             match arg.trim() {
                 "sleep" => {
                     for i in 1..=3 {
-                        println!("sleep -> {} output",i);
+                        println!("sleep -> {} output", i);
                         sleep(Duration::from_secs(1));
                     }
                     println!("end sleep");
@@ -28,11 +29,17 @@ fn main() {
                     println!("Input 你好");
                     let mut line = String::new();
                     let bl = std::io::stdin().read_line(&mut line).unwrap();
-                    println!("you input:{}",line.trim());
-                    println!("字节数:{}",bl);
+                    println!("you input:{}", line.trim());
+                    println!("字节数:{}", bl);
                 }
                 "help" => {
                     println!("sleep/ ?");
+                }
+                "return" => {
+                    return ExitCode::FAILURE;
+                }
+                "return32" => {
+                    return ExitCode::from(32);
                 }
                 _ => continue,
             };
@@ -40,4 +47,5 @@ fn main() {
     } else {
         println!("This is a sentence generator,\nType --help to see help.\nVersion: v1.2.3");
     }
+    ExitCode::SUCCESS
 }

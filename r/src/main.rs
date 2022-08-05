@@ -1,33 +1,98 @@
+use std::ffi::OsStr;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Read, Write};
 use std::path::PathBuf;
-use std::process::{Command, ExitCode, Stdio};
-use std::thread;
+use std::process::{Child, Command, ExitCode, Stdio};
+use std::{env, panic, thread};
 
 use common::config;
 use common::wyhash;
 
-fn main() {
-    let _c = exec_base("./target/debug/generator.exe");
-    println!("{:?}", _c);
-    // todo!(|| { exec("",false) });
-}
+/// 下面的只是例子，实际上这几个命令已经在 replacer.lua 中过滤掉了
+const BUILTIN_COMMAND: [&str; 1] = ["clean"];
 
-/// 执行单条命令 - 基本功能
-/// todo: 目前没有处理包含管道重定向符的情况，默认处理普通的一条命令
-fn exec_base(command_str: &str) -> ExitCode {
-    let _command_str = command_str.trim();
-    if _command_str.len() == 0 {
-        return ExitCode::FAILURE;
+fn main() -> ExitCode {
+    // 为release模式提供更友好的错误提示
+    if !cfg!(debug_assertions) {
+        // println!("debug");
+        panic::set_hook(Box::new(|info| {
+            if let Some(s) = info.payload().downcast_ref::<String>() {
+                eprintln!("{}", s);
+            }
+        }));
     }
-    let mut pieces = _command_str.split_whitespace();
-    let command_path = pieces.next().unwrap();
+    let mut args = env::args();
+    args.next(); // r.exe path
+    let _command = args.next().expect("用法: r any.exe [any args]");
+    let _command_str = _command.trim();
 
-    // 测试用，查看具体参数
-    // for i in pieces.clone().into_iter() {
-    //     println!("{:?}", i);
-    // }
+    // 内置命令
+    if  BUILTIN_COMMAND.contains(&_command_str) {
+        return exec_raw(
+            PathBuf::from(&config::PATHS.2)
+                .join("tools")
+                .join(format!("{}.exe",_command_str))
+                .to_str()
+                .expect("路径转换出错"),
+            args,
+        );
+    }
+    if _command_str == "clear" || _command_str == "clean" {
+        return exec_raw(
+            PathBuf::from(&config::PATHS.2)
+                .join("tools")
+                .join("clear.exe")
+                .to_str()
+                .expect("路径转换出错"),
+            args,
+        );
+    }
+    // 读取不执行的命令的名单，防止出现未知错误
+    let mut _blocklist: Vec<String> = Vec::new();
+    let _blocklist_path = PathBuf::from(&config::PATHS.2).join("blocklist.txt");
+    if _blocklist_path.is_file() {
+        let _blocklist_file =
+            File::open(_blocklist_path).expect("白名单文件读取错误，如不使用请删除白名单文件");
+        for line in BufReader::new(_blocklist_file).lines() {
+            match line {
+                Ok(some) => _blocklist.push(some),
+                Err(_) => continue,
+            }
+        }
+    }
+    // 匹配
+    for name in _blocklist {
+        if _command_str == name.trim() {
+            // println!("blocked!");
+            return exec_raw(_command_str, args);
+        }
+    }
 
+    // 开始执行
+    let _rec = exec_base(_command_str, args);
+    // println!("{:?}", &_rec);
+    _rec
+}
+/// 执行单条命令 - 原样执行
+fn exec_raw<I, S>(command_path: &str, pieces: I) -> ExitCode
+where
+    I: IntoIterator<Item = S>,
+    S: AsRef<OsStr>,
+{
+    let command = Command::new(command_path)
+        .args(pieces)
+        .spawn()
+        .expect("无法运行指定程序");
+
+    // 获取退出码并传递给调用方
+    get_exitcode(command)
+}
+/// 执行单条命令 - 带处理功能
+fn exec_base<I, S>(command_path: &str, pieces: I) -> ExitCode
+where
+    I: IntoIterator<Item = S>,
+    S: AsRef<OsStr>,
+{
     let mut command = Command::new(command_path)
         .args(pieces)
         .stdout(Stdio::piped())
@@ -73,15 +138,20 @@ fn exec_base(command_str: &str) -> ExitCode {
     thread_stderr.join().expect("无法加入线程:标准错误");
 
     // 获取退出码并传递给调用方
+    get_exitcode(command)
+}
+
+fn get_exitcode(mut command: Child) -> ExitCode {
+    // 获取退出码并传递给调用方
     let mut exitcode: u8 = 0;
     match command.try_wait() {
         Ok(Some(status)) => {
-            exitcode = status.code().unwrap() as u8;
+            exitcode = status.code().expect("无法获取程序退出码") as u8;
         }
         Ok(None) => {
             // println!("status not ready yet, let's really wait");
-            let res = command.wait().unwrap();
-            exitcode = res.code().unwrap() as u8;
+            let res = command.wait().expect("无法等待程序退出");
+            exitcode = res.code().expect("无法获取程序退出码") as u8;
         }
         Err(e) => eprintln!("等待子线程退出出错:{}", e),
     };
@@ -90,6 +160,9 @@ fn exec_base(command_str: &str) -> ExitCode {
 }
 
 fn process_single_stdout_and_err(line: &str) -> String {
+    if line.is_empty() {
+        return String::new();
+    }
     let _hash = wyhash::hash(line);
     let _file_name = _hash + ".txt";
     let _new_path = PathBuf::from(&config::PATHS.1).join(&_file_name);

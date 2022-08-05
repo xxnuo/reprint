@@ -6,8 +6,8 @@ const PROJ_ROOT_PATH: &str = r"C:\Users\bigtear\Documents\GitHub\reprint";
 
 use lazy_static::lazy_static;
 lazy_static! {
-    ///PATHS 0:raw 文件夹；1:new 文件夹
-    pub static ref PATHS: (PathBuf, PathBuf) = config_init();
+    ///PATHS 0:raw文件夹;1:new文件夹;2:data目录
+    pub static ref PATHS: (PathBuf, PathBuf,PathBuf) = config_init();
 }
 
 // fn main() {
@@ -17,7 +17,7 @@ lazy_static! {
 // }
 
 /// 获取输出目录和读取目录
-pub fn config_init() -> (PathBuf, PathBuf) {
+pub fn config_init() -> (PathBuf, PathBuf, PathBuf) {
     let path = if cfg!(debug_assertions) {
         // debug 指定根目录
         PathBuf::from(PROJ_ROOT_PATH)
@@ -37,5 +37,5 @@ pub fn config_init() -> (PathBuf, PathBuf) {
     if !new_path.is_dir() {
         create_dir_all(&new_path).expect("致命错误:无法创建替换文件目录");
     };
-    (raw_path, new_path)
+    (raw_path, new_path, path)
 }
