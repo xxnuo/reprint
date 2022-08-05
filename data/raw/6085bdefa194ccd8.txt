@@ -1,0 +1,1 @@
+    -D, --deny LINT     Set lint denied

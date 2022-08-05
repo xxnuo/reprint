@@ -1,0 +1,1 @@
+    -g                  Equivalent to -C debuginfo=2

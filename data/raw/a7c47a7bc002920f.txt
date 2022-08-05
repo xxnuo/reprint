@@ -1,0 +1,1 @@
+        --crate-type [bin|lib|rlib|dylib|cdylib|staticlib|proc-macro]

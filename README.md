@@ -24,9 +24,9 @@
 | 项目             | 说明      | 备注  |
 |----------------|---------|-----|
 | `r`            | 主程序     | bin |
-| `r-data`       | 配置数据存储  | bin |
-| `r-editor`     | 配置编辑器   | bin |
-| `r-library`    | 共享、下载配置 | bin |
-| `r-translator` | 翻译器     | bin |
 | `common`       | 共享库     | lib |
 
+### TODO
+
+- Font Color 字符颜色支持
+- Trans Tool 翻译工具

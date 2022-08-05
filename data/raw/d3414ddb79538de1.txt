@@ -1,0 +1,1 @@
+                        static, framework, or dylib (the default).
