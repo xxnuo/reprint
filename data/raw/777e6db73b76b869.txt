@@ -1,0 +1,1 @@
+2022-08-06 18:01:37,079 [ 251896] SEVERE - c.j.t.m.TerminalTextBuffer - Attempt to get line out of bounds: 9 >= 9

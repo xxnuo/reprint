@@ -1,0 +1,1 @@
+	|==> q=%3Cdiv+class%3D%22content%22%3E%0A+%3Cp%3E%E7%94%A8%E7%BB%99%E5%AE%9A%E7%9A%84+%3Ccode%3E%26amp%3B%3Ca+href%3D%22psi_element%3A%2F%2FOsStr%22%3EOsStr%3C%2Fa%3E%3C%2Fcode%3E+%E5%88%87%E7%89%87%E6%89%A9%E5%B1%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%82%3C%2Fp%3E%0A+%3Ch2%3EExamples%3C%2Fh2%3E%0A+%3Cpre+id%3D%220%22%3E%3C%2Fpre%3E%0A%3C%2Fdiv%3E

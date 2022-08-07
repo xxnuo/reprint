@@ -1,0 +1,1 @@
+2022-08-06 19:00:18,472 [3773289]   WARN - #c.i.o.a.i.ActionUpdater - 298 ms to grab EDT for RsBuildAction#update@NavBarToolbar (org.rust.ide.actions.RsBuildAction)

@@ -1,0 +1,1 @@
+    WHERE "c:\windows;c:\windows\system32:*.dll"

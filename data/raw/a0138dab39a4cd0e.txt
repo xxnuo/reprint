@@ -1,0 +1,1 @@
+2022-08-06 19:00:17,892 [3772709] SEVERE - #c.i.o.a.TransactionGuardImpl - JDK: 17.0.3; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.

@@ -1,0 +1,1 @@
+build_all:build_linux_amd64 build_linux_386 build_linux_arm build_windows_amd64 build_darwin_amd64

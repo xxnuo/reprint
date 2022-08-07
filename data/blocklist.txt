@@ -1,2 +1,6 @@
 powershell
 powershell.exe
+wsl
+wsl.exe
+bash
+bash.exe

@@ -1,0 +1,1 @@
+	at com.intellij.ide.ui.laf.WindowsDetector$1$1.run(SystemDarkThemeDetector.kt:114)

@@ -1,0 +1,1 @@
+	at com.intellij.psi.impl.file.impl.FileManagerImpl.firePropertyChangedForUnloadedPsi(FileManagerImpl.java:149)

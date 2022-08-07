@@ -1,0 +1,1 @@
+	'go mod init example.com/m' to initialize a v0 or v1 module

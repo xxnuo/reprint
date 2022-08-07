@@ -1,0 +1,1 @@
+go: cannot find main module, but found .git/config in C:\Users\bigtear\Documents\GitHub\yd
