@@ -2,6 +2,14 @@
 
 ---
 
+## 尚未完成
+## 和Window结合的用法等待v1.0.0时完善
+
+## Not yet completed
+## The usage combined with window will be improved in v1.0.0
+
+---
+
 ## 终端输出替换工具
 
 支持 Win/Linux/macOS
