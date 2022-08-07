@@ -1,1 +1,0 @@
-	at java.desktop/java.awt.Dialog.show(Dialog.java:1080)

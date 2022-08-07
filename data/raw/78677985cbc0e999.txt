@@ -1,1 +1,0 @@
-    run, r      Run a binary or example of the local package

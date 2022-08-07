@@ -1,1 +1,0 @@
-    -F, --forbid LINT   Set lint forbidden

@@ -1,1 +1,0 @@
-go: found github.com/PuerkitoBio/goquery in github.com/PuerkitoBio/goquery v1.8.0

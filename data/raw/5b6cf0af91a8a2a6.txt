@@ -1,1 +1,0 @@
-	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4575)

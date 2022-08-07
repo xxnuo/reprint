@@ -1,1 +1,0 @@
-	at java.desktop/java.awt.WaitDispatchSupport$2.run(WaitDispatchSupport.java:191)

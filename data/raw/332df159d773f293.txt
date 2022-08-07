@@ -1,1 +1,0 @@
-	at com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl.schemeChangedOrSwitched(EditorColorsManagerImpl.java:349)

@@ -1,1 +1,0 @@
-config.d    deps	generator.exe  libcommon.d     r.exe  work_dir.exe  wyhash.exe

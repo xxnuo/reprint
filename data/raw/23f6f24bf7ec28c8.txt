@@ -1,1 +1,0 @@
-  The JavaScript Intention Power Pack (id=JSIntentionPowerPack, path=C:\Program Files\JetBrains\CLion 2022.1.3\plugins\JSIntentionPowerPack) plugin Requires plugin 'JavaScript' to be enabled

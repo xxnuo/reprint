@@ -1,1 +1,0 @@
-	at com.intellij.openapi.keymap.impl.ui.KeymapPanel.editSelection(KeymapPanel.java:598)

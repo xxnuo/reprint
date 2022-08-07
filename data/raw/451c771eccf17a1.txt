@@ -1,1 +1,0 @@
-	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:749)

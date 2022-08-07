@@ -1,1 +1,0 @@
-    build, b    Compile the current package

@@ -1,1 +1,0 @@
-	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3392)

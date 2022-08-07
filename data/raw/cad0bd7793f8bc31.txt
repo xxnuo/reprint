@@ -1,1 +1,0 @@
-	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)

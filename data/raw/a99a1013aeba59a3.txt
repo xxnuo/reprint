@@ -1,1 +1,0 @@
-	at com.intellij.psi.impl.PsiModificationTrackerImpl.incCountersInner(PsiModificationTrackerImpl.java:86)

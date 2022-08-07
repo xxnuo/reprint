@@ -1,1 +1,0 @@
-    doc, d      Build this package's and its dependencies' documentation

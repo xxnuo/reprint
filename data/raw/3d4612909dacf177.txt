@@ -1,1 +1,0 @@
-	at com.intellij.openapi.application.impl.FlushQueue.runNextEvent(FlushQueue.java:118)

@@ -1,1 +1,0 @@
-java.lang.Throwable: Write-unsafe context! Model changes are allowed from write-safe contexts only. Please ensure you're using invokeLater/invokeAndWait with a correct modality state (not "any"). See TransactionGuard documentation for details.

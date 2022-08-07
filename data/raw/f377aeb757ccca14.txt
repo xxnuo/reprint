@@ -1,1 +1,0 @@
-2022-08-06 17:57:36,919 [  11736]   WARN - #c.i.o.a.i.ActionUpdater - 208 ms to grab EDT for UndoAction#update@MainMenu (com.intellij.ide.actions.UndoAction)

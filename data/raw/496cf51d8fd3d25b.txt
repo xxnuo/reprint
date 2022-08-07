@@ -1,1 +1,0 @@
-2022-08-06 19:00:17,892 [3772709] SEVERE - #c.i.o.a.TransactionGuardImpl - CLion 2022.2  Build #CL-222.3345.126

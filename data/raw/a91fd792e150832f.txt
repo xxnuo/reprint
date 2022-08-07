@@ -1,1 +1,0 @@
-2022-08-06 19:18:38,020 [4872837]   WARN - #c.i.b.BuildTreeConsoleView - start event id collision found:common 0.1.0, was also in node: null

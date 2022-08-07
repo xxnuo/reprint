@@ -1,1 +1,0 @@
-2022-08-06 19:00:17,893 [3772710] SEVERE - #c.i.o.a.TransactionGuardImpl - OS: Windows 10

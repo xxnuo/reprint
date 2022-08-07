@@ -1,1 +1,0 @@
-go: creating new go.mod: module github.com/zysidea/yd

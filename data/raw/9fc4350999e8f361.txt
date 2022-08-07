@@ -1,1 +1,0 @@
-	at com.intellij.openapi.application.impl.ApplicationImpl$3.run(ApplicationImpl.java:513)

@@ -1,1 +1,0 @@
-	at com.intellij.openapi.application.impl.ApplicationImpl.runWriteAction(ApplicationImpl.java:1037)

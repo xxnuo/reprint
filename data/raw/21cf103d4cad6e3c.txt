@@ -1,1 +1,0 @@
-	at com.intellij.openapi.application.impl.FlushQueue.doRun(FlushQueue.java:75)

@@ -1,1 +1,0 @@
-	at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.java:484)

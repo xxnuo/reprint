@@ -1,1 +1,0 @@
-Bad owner or permissions on C:\\Users\\bigtear/.ssh/config

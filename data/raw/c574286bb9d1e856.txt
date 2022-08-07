@@ -1,1 +1,0 @@
-    add         Add dependencies to a manifest file

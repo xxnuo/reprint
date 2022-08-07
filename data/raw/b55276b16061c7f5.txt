@@ -1,1 +1,0 @@
-    cargo [+toolchain] [OPTIONS] [SUBCOMMAND]

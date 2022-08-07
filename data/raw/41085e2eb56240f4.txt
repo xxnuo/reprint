@@ -1,1 +1,0 @@
-        --color <WHEN>          Coloring: auto, always, never

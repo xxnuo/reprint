@@ -1,1 +1,0 @@
-    --help -v           Print the full set of options rustc accepts

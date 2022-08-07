@@ -1,1 +1,0 @@
-  The JavaScript Debugger (id=JavaScriptDebugger, path=C:\Program Files\JetBrains\CLion 2022.1.3\plugins\JavaScriptDebugger) plugin Requires plugin 'JavaScript' to be enabled

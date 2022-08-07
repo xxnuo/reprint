@@ -1,1 +1,0 @@
-	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5022)

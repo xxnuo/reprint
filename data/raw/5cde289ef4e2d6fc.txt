@@ -1,1 +1,0 @@
-go: cannot determine module path for source directory C:\Users\bigtear\Documents\GitHub\yd (outside GOPATH, module path must be specified)

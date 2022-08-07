@@ -1,1 +1,0 @@
-    -q, --quiet                 Do not print cargo log messages

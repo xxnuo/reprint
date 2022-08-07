@@ -1,1 +1,0 @@
-        --emit [asm|llvm-bc|llvm-ir|obj|metadata|link|dep-info|mir]
