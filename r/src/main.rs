@@ -8,7 +8,9 @@ use std::{env, panic, thread};
 use common::config;
 use common::wyhash;
 
-/// 下面的只是例子，实际上这几个命令已经在 replacer.lua 中过滤掉了
+/// 下面的是调用内置命令例子，位置在data/tools/clean.exe，文件来自MSYS2
+/// 目前仅仅调用exe，相比其他方法的优势可能就是不在PATH里显示，然并卵，并非真正的内置命令
+/// TODO: 编写真正的builtin命令模块
 const BUILTIN_COMMAND: [&str; 1] = ["clean"];
 
 fn main() -> ExitCode {
@@ -25,7 +27,8 @@ fn main() -> ExitCode {
     args.next(); // r.exe path
     let _command = match args.next() {
         Some(some) => {
-            config::add_path_efficient(); //添加环境变量
+            //添加环境变量，调用当前目录的文件或exe不需要添加./或.\
+            config::add_path_efficient();
             some
         }
         // 没有命令输入，直接退出
