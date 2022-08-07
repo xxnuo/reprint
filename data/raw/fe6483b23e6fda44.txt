@@ -1,0 +1,1 @@
+Activate the web console with: systemctl enable --now cockpit.socket

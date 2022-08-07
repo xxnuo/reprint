@@ -24,7 +24,10 @@ fn main() -> ExitCode {
     let mut args = env::args();
     args.next(); // r.exe path
     let _command = match args.next() {
-        Some(some) => some,
+        Some(some) => {
+            config::add_path_efficient(); //添加环境变量
+            some
+        }
         // 没有命令输入，直接退出
         None => return ExitCode::SUCCESS,
     };

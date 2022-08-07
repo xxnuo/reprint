@@ -4,3 +4,5 @@ wsl
 wsl.exe
 bash
 bash.exe
+ssh
+ssh.exe
