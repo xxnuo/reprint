@@ -13,6 +13,8 @@ use common::wyhash;
 /// TODO: 编写真正的builtin命令模块
 const BUILTIN_COMMAND: [&str; 1] = ["clean"];
 
+/// 准备重写，不再使用拦截-处理-输出模式，缺点太多
+/// 新版使用管道方式处理并输出文本。
 fn main() -> ExitCode {
     // 为release模式提供更友好的错误提示
     if !cfg!(debug_assertions) {
