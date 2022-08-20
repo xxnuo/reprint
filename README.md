@@ -1,6 +1,6 @@
 # reprint
 
-# Work with all shells
+# Work with all PowerShell
 
 ---
 
